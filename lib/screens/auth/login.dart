@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sporquify_app/screens/auth/register.dart';
-import 'package:sporquify_app/utilities/theme/color_scheme.dart';
+import '../../providers/theme_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
           height: 33,
           width: 108,
           colorFilter: ColorFilter.mode(
-            LightTheme.primary,
+            Theme.of(context).colorScheme.primary,
             BlendMode.srcIn,
           ),
         ),
@@ -68,31 +68,29 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).brightness == Brightness.light
-                        ? LightTheme.blackText
-                        : DarkTheme.whiteText,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'If You Need Any Support ',
                       style: TextStyle(
                         fontSize: 16,
-                        color: LightTheme.secondaryText,
+                        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
                       ),
                     ),
                     GestureDetector(
                       onTap: () {
                         // Acción de soporte
                       },
-                      child: const Text(
+                      child: Text(
                         'Click Here',
                         style: TextStyle(
                           fontSize: 16,
-                          color: LightTheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -105,16 +103,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     hintText: 'Enter Email',
-                    hintStyle: const TextStyle(color: LightTheme.secondaryText, fontSize: 18, fontWeight: FontWeight.bold),
+                    hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 18, fontWeight: FontWeight.bold),
                     filled: true,
                     fillColor: Theme.of(context).scaffoldBackgroundColor,
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: const BorderSide(color: LightTheme.secondaryText),
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6)),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: const BorderSide(color: LightTheme.primary),
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                     ),
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 20,
@@ -139,16 +137,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: _obscurePassword,
                   decoration: InputDecoration(
                     hintText: 'Password',
-                    hintStyle: const TextStyle(color: LightTheme.secondaryText, fontSize: 18, fontWeight: FontWeight.bold),
+                    hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 18, fontWeight: FontWeight.bold),
                     filled: true,
                     fillColor: Theme.of(context).scaffoldBackgroundColor,
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: const BorderSide(color: LightTheme.secondaryText),
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6)),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: const BorderSide(color: LightTheme.primary),
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                     ),
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 20,
@@ -159,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         _obscurePassword
                             ? Icons.visibility_off_outlined
                             : Icons.visibility_outlined,
-                        color: LightTheme.secondaryText,
+                        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
                       ),
                       onPressed: () {
                         setState(() {
@@ -189,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: LightTheme.primary,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -208,13 +206,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 24.0),
                   child: Row(
-                    children: const [
+                    children: [
                       Expanded(child: Divider(color: Color(0xFFE0E0E0))),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: Text(
                           'Or',
-                          style: TextStyle(color: LightTheme.secondaryText),
+                          style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6)),
                         ),
                       ),
                       Expanded(child: Divider(color: Color(0xFFE0E0E0))),
@@ -259,11 +257,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Not A Member ? ',
                       style: TextStyle(
                         fontSize: 14,
-                        color: LightTheme.secondaryText,
+                        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
                       ),
                     ),
                     GestureDetector(
@@ -275,11 +273,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         );
                       },
-                      child: const Text(
+                      child: Text(
                         'Register Now',
                         style: TextStyle(
                           fontSize: 14,
-                          color: LightTheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.w600,
                         ),
                       ),

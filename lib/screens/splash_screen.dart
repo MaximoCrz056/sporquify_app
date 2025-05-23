@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sporquify_app/screens/get_started.dart';
-import 'package:sporquify_app/utilities/theme/color_scheme.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -33,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
               'assets/Vector.svg',
               height: 50,
               width: 50,
-              colorFilter: ColorFilter.mode(LightTheme.primary, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.primary, BlendMode.srcIn),
             ),
           ],
         ),

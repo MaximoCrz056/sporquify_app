@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sporquify_app/utilities/theme/color_scheme.dart';
-import 'package:sporquify_app/main.dart';
+import 'package:provider/provider.dart';
+import '../providers/theme_provider.dart';
 
 class GetStarted extends StatefulWidget {
   const GetStarted({super.key});
@@ -34,21 +34,19 @@ class _GetStartedState extends State<GetStarted> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    IconButton(
-                      icon: Icon(
-                        Theme.of(context).brightness == Brightness.dark
-                            ? Icons.light_mode
-                            : Icons.dark_mode,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          if (themeNotifier.value == ThemeMode.dark) {
-                            themeNotifier.value = ThemeMode.light;
-                          } else {
-                            themeNotifier.value = ThemeMode.dark;
-                          }
-                        });
+                    Consumer<ThemeProvider>(
+                      builder: (context, themeProvider, child) {
+                        return IconButton(
+                          icon: Icon(
+                            themeProvider.isDarkMode
+                                ? Icons.light_mode
+                                : Icons.dark_mode,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            themeProvider.toggleTheme();
+                          },
+                        );
                       },
                     ),
                   ],
@@ -62,7 +60,7 @@ class _GetStartedState extends State<GetStarted> {
                       'assets/Vector.svg',
                       height: 59,
                       width: 196,
-                      colorFilter: ColorFilter.mode(LightTheme.primary, BlendMode.srcIn),
+                      colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.primary, BlendMode.srcIn),
                     ),
                   ],
                 ),
@@ -97,7 +95,7 @@ class _GetStartedState extends State<GetStarted> {
                       Navigator.pushReplacementNamed(context, '/chose');
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: LightTheme.primary,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sporquify_app/screens/auth/login.dart';
 import 'package:sporquify_app/screens/auth/register.dart';
-import 'package:sporquify_app/utilities/theme/color_scheme.dart';
+
 import 'dart:math' as math;
 
 class Chose extends StatelessWidget {
@@ -58,7 +58,7 @@ class Chose extends StatelessWidget {
                       'assets/Vector.svg',
                       height: 71,
                       width: 235,
-                      colorFilter: ColorFilter.mode(LightTheme.primary, BlendMode.srcIn),
+                      colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.primary, BlendMode.srcIn),
                     )
                   ),
                   const SizedBox(height: 55),
@@ -69,9 +69,7 @@ class Chose extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Theme.of(context).brightness == Brightness.light
-                            ? LightTheme.blackText
-                            : DarkTheme.whiteText,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                       textAlign: TextAlign.end,
                     ),
@@ -82,9 +80,7 @@ class Chose extends StatelessWidget {
                     'Sporquify is a proprietary Swedish audio streaming and media services provider',
                     style: TextStyle(
                       fontSize: 19,
-                      color: Theme.of(context).brightness == Brightness.light
-                          ? LightTheme.secondaryText
-                          : DarkTheme.secondaryText,
+                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -105,7 +101,7 @@ class Chose extends StatelessWidget {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: LightTheme.primary,
+                            backgroundColor: Theme.of(context).colorScheme.primary,
                             padding: const EdgeInsets.symmetric(vertical: 5),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
@@ -137,9 +133,7 @@ class Chose extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 19,
                               fontWeight: FontWeight.w600,
-                              color: Theme.of(context).brightness == Brightness.light
-                                  ? LightTheme.blackText
-                                  : DarkTheme.whiteText,
+                              color: Theme.of(context).colorScheme.onSurface,
                             ),
                           ),
                         ),
